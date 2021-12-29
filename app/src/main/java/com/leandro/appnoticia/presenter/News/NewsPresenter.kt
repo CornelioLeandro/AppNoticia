@@ -6,20 +6,22 @@ import com.leandro.appnoticia.presenter.ViewHome
 
 class NewsPresenter(val view: ViewHome.View, private val dataSource: NewsDataSource) :
     NewsHome.Presenter {
+
     override fun requestAll() {
-        TODO("Not yet implemented")
+       this.view.showProgressBar()
+        this.dataSource.getBreakNews(this)
     }
 
     override fun onSuccess(newsResponse: NewsResponse) {
-        TODO("Not yet implemented")
+        this.view.showArticles(newsResponse.articles)
     }
 
     override fun onError(message: String) {
-        TODO("Not yet implemented")
+        this.view.showFailure(message)
     }
 
     override fun onComplete() {
-        TODO("Not yet implemented")
+        this.view.hideProgressBar()
     }
 
 }

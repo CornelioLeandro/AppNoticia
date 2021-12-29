@@ -4,20 +4,23 @@ import com.leandro.appnoticia.model.NewsResponse
 import com.leandro.appnoticia.model.data.NewsDataSource
 import com.leandro.appnoticia.presenter.ViewHome
 
-class SearchPresenter(val view: ViewHome.View, private val dataSource: NewsDataSource): SearchHome.Presenter {
-    override fun search(ternm: String) {
-        TODO("Not yet implemented")
+class SearchPresenter(val view: ViewHome.View, private val dataSource: NewsDataSource) :
+    SearchHome.Presenter {
+
+    override fun search(term: String) {
+        this.view.showProgressBar()
+        this.dataSource.searchNews(term, this)
     }
 
     override fun onSuccess(newsResponse: NewsResponse) {
-        TODO("Not yet implemented")
+        this.view.showArticles(newsResponse.articles)
     }
 
     override fun onError(message: String) {
-        TODO("Not yet implemented")
+        this.view.showFailure(message)
     }
 
     override fun onComplete() {
-        TODO("Not yet implemented")
+        this.view.hideProgressBar()
     }
 }

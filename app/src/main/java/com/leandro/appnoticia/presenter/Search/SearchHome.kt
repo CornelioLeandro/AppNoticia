@@ -5,7 +5,7 @@ import com.leandro.appnoticia.model.NewsResponse
 interface SearchHome {
 
     interface Presenter{
-        fun search(ternm: String)
+        fun search(term: String)
         fun onSuccess(newsResponse: NewsResponse)
         fun onError(message: String)
         fun onComplete()
