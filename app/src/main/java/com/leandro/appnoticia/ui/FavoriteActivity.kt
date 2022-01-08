@@ -10,22 +10,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.leandro.appnoticia.R
 import com.leandro.appnoticia.adapter.MainAdapter
+import com.leandro.appnoticia.databinding.ActivityFavoriteBinding
 import com.leandro.appnoticia.model.Article
 import com.leandro.appnoticia.model.data.NewsDataSource
 import com.leandro.appnoticia.presenter.Favorite.FavoritePresenter
 import com.leandro.appnoticia.presenter.ViewHome
-import kotlinx.android.synthetic.main.activity_favorite.*
-import kotlinx.android.synthetic.main.activity_main.*
 
-class FavoriteActivity : AbstractActivity(), ViewHome.Favorite{
+
+class FavoriteActivity : AppCompatActivity(), ViewHome.Favorite{
 
     private val mainAdapter by lazy {
         MainAdapter()
     }
 
+    lateinit var binding: ActivityFavoriteBinding
     private lateinit var presenter:FavoritePresenter
 
-    override fun onInject() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding= ActivityFavoriteBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         val dataSource = NewsDataSource(this)
         presenter = FavoritePresenter(this,dataSource)
         presenter.getAll()
@@ -40,7 +46,7 @@ class FavoriteActivity : AbstractActivity(), ViewHome.Favorite{
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-              return true
+                return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -58,14 +64,17 @@ class FavoriteActivity : AbstractActivity(), ViewHome.Favorite{
 
         }
         ItemTouchHelper(itemTouchPerCallbacks).apply {
-            attachToRecyclerView(rv_favorite)
+            attachToRecyclerView(binding.rvFavorite)
         }
 
         presenter.getAll()
     }
 
+
+
+
     private fun configRecycle() {
-        with(rv_favorite) {
+        with(binding.rvFavorite) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@FavoriteActivity)
             addItemDecoration(
@@ -87,7 +96,4 @@ class FavoriteActivity : AbstractActivity(), ViewHome.Favorite{
     override fun showArticles(article: List<Article>) {
      mainAdapter.differ.submitList(article.toList())
     }
-
-    override fun getLayout(): Int = R.layout.activity_favorite
-
 }

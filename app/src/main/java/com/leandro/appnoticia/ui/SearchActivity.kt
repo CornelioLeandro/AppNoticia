@@ -1,40 +1,48 @@
 package com.leandro.appnoticia.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.leandro.appnoticia.R
 import com.leandro.appnoticia.adapter.MainAdapter
+import com.leandro.appnoticia.databinding.ActivitySearchBinding
 import com.leandro.appnoticia.model.Article
 import com.leandro.appnoticia.model.data.NewsDataSource
 import com.leandro.appnoticia.presenter.Search.SearchPresenter
 import com.leandro.appnoticia.presenter.ViewHome
 import com.leandro.appnoticia.util.UtilQueryTextListener
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_search.*
 
-class SearchActivity : AbstractActivity(), ViewHome.View{
+
+class SearchActivity : AppCompatActivity(), ViewHome.View{
 
     private val mainAdapter by lazy{
         MainAdapter()
     }
 
+    private lateinit var binding: ActivitySearchBinding
+
     private lateinit var presenter: SearchPresenter
 
-    override fun onInject() {
-     val dataSource = NewsDataSource(this)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        val dataSource = NewsDataSource(this)
         presenter = SearchPresenter(this,dataSource)
         configRecycle()
         search()
         clickAdapter()
     }
 
+
+
     fun search(){
-        search_news.setOnQueryTextListener(
+        binding.searchNews.setOnQueryTextListener(
             UtilQueryTextListener(
                 this.lifecycle
             ){
@@ -42,7 +50,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View{
                 newText?.let { query ->
                     if (query.isNotEmpty()){
                         presenter.search(query)
-                        search_progress.visibility = View.VISIBLE
+                        binding.searchProgress.visibility = View.VISIBLE
                     }
                 }
             }
@@ -50,7 +58,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View{
     }
 
     private fun configRecycle(){
-        with(rv_search) {
+        with(binding.rvSearch) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@SearchActivity)
             addItemDecoration(
@@ -70,7 +78,7 @@ class SearchActivity : AbstractActivity(), ViewHome.View{
     }
 
     override fun showProgressBar() {
-        search_progress.visibility = View.VISIBLE
+        binding.searchProgress.visibility = View.VISIBLE
     }
 
     override fun showFailure(message: String) {
@@ -78,13 +86,11 @@ class SearchActivity : AbstractActivity(), ViewHome.View{
     }
 
     override fun hideProgressBar() {
-        search_progress.visibility = View.GONE
+        binding.searchProgress.visibility = View.GONE
     }
 
     override fun showArticles(article: List<Article>) {
        mainAdapter.differ.submitList(article.toList())
     }
-
-    override fun getLayout(): Int = R.layout.activity_search
 
 }

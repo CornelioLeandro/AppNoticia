@@ -11,27 +11,36 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leandro.appnoticia.R
 import com.leandro.appnoticia.adapter.MainAdapter
+import com.leandro.appnoticia.databinding.ActivityMainBinding
 import com.leandro.appnoticia.model.Article
 import com.leandro.appnoticia.model.data.NewsDataSource
 import com.leandro.appnoticia.presenter.News.NewsPresenter
 import com.leandro.appnoticia.presenter.ViewHome
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AbstractActivity(), ViewHome.View {
+
+class MainActivity : AppCompatActivity(), ViewHome.View {
 
     private val mainAdapter by lazy {
         MainAdapter()
     }
 
-    private lateinit var presenter: NewsPresenter
+    lateinit var binding: ActivityMainBinding
 
-    override fun onInject() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
         val dataSource = NewsDataSource(this)
         presenter = NewsPresenter(this, dataSource)
         presenter.requestAll()
         configRecycle()
         clickAdapter()
     }
+
+    private lateinit var presenter: NewsPresenter
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main_item, menu)
@@ -55,7 +64,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     }
 
     private fun configRecycle() {
-        with(rv_main) {
+        with(binding.rvMain) {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
             addItemDecoration(
@@ -74,7 +83,7 @@ class MainActivity : AbstractActivity(), ViewHome.View {
         }
     }
     override fun showProgressBar() {
-       main_progress.visibility = View.VISIBLE
+       binding.mainProgress.visibility = View.VISIBLE
     }
 
     override fun showFailure(message: String) {
@@ -82,12 +91,11 @@ class MainActivity : AbstractActivity(), ViewHome.View {
     }
 
     override fun hideProgressBar() {
-        main_progress.visibility = View.GONE
+        binding.mainProgress.visibility = View.GONE
     }
 
     override fun showArticles(article: List<Article>) {
        mainAdapter.differ.submitList(article.toList())
     }
 
-    override fun getLayout(): Int = R.layout.activity_main
 }
