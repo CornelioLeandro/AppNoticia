@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppNoticia">
-        <activity android:name=".ui.SearchActivity"></activity>
-        <activity android:name=".ui.FavoriteActivity" />
-        <activity android:name=".ui.ArticleActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.activity.SearchActivity"></activity>
+        <activity android:name=".ui.activity.FavoriteActivity" />
+        <activity android:name=".ui.activity.ArticleActivity" />
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

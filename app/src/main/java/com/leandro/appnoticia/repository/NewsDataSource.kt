@@ -1,9 +1,9 @@
-package com.leandro.appnoticia.model.data
+package com.leandro.appnoticia.repository
 
 import android.content.Context
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.db.ArticleDatabase
-import com.leandro.appnoticia.network.RetrofitInstance
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.data.local.db.ArticleDatabase
+import com.leandro.appnoticia.data.remote.RetrofitInstance
 import com.leandro.appnoticia.presenter.Favorite.FavoriteHome
 import com.leandro.appnoticia.presenter.News.NewsHome
 import com.leandro.appnoticia.presenter.Search.SearchHome

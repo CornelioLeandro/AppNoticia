@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.model
+package com.leandro.appnoticia.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

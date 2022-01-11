@@ -1,6 +1,6 @@
 package com.leandro.appnoticia.presenter
 
-import com.leandro.appnoticia.model.Article
+import com.leandro.appnoticia.data.local.model.Article
 
 interface ViewHome {
 

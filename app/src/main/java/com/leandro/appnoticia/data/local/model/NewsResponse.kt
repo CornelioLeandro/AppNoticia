@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.model
+package com.leandro.appnoticia.data.local.model
 
 data class NewsResponse(
     val articles: MutableList<Article>,

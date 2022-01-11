@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.ui
+package com.leandro.appnoticia.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.leandro.appnoticia.R
-import com.leandro.appnoticia.adapter.MainAdapter
+import com.leandro.appnoticia.ui.adapter.MainAdapter
 import com.leandro.appnoticia.databinding.ActivityFavoriteBinding
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.Favorite.FavoritePresenter
 import com.leandro.appnoticia.presenter.ViewHome
 
@@ -87,7 +87,7 @@ class FavoriteActivity : AppCompatActivity(), ViewHome.Favorite{
 
     private fun clickAdapter(){
         mainAdapter.setOnClickListener { article ->
-            val  intent = Intent(this,ArticleActivity::class.java)
+            val  intent = Intent(this, ArticleActivity::class.java)
             intent.putExtra("article", article)
             startActivity(intent)
         }

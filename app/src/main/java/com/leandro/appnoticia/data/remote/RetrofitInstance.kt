@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.network
+package com.leandro.appnoticia.data.remote
 
 import com.leandro.appnoticia.util.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient

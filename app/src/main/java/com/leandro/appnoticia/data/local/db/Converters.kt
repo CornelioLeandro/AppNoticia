@@ -1,7 +1,7 @@
-package com.leandro.appnoticia.model.db
+package com.leandro.appnoticia.data.local.db
 
 import androidx.room.TypeConverter
-import com.leandro.appnoticia.model.Source
+import com.leandro.appnoticia.data.local.model.Source
 
 
 class Converters {

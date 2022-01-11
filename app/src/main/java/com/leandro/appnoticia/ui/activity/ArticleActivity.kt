@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.ui
+package com.leandro.appnoticia.ui.activity
 
 
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.leandro.appnoticia.R
 import com.leandro.appnoticia.databinding.ActivityArticleBinding
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.Favorite.FavoritePresenter
 import com.leandro.appnoticia.presenter.ViewHome
 

@@ -1,6 +1,6 @@
 package com.leandro.appnoticia.presenter.Search
 
-import com.leandro.appnoticia.model.NewsResponse
+import com.leandro.appnoticia.data.local.model.NewsResponse
 
 interface SearchHome {
 

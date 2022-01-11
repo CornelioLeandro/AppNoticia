@@ -1,7 +1,7 @@
 package com.leandro.appnoticia.presenter.News
 
-import com.leandro.appnoticia.model.NewsResponse
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.NewsResponse
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.ViewHome
 
 class NewsPresenter(val view: ViewHome.View, private val dataSource: NewsDataSource) :

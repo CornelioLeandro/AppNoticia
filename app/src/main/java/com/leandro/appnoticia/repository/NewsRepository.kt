@@ -1,9 +1,9 @@
-package com.leandro.appnoticia.model.data
+package com.leandro.appnoticia.repository
 
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.db.ArticleDatabase
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.data.local.db.ArticleDatabase
 
-class NewsRepository(private val db:ArticleDatabase) {
+class NewsRepository(private val db: ArticleDatabase) {
 
     suspend fun updateInsert(article: Article) = db.getArticleDao().updateInsert(article)
 

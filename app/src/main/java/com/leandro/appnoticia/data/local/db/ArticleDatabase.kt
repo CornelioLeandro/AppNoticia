@@ -1,8 +1,8 @@
-package com.leandro.appnoticia.model.db
+package com.leandro.appnoticia.data.local.db
 
 import android.content.Context
 import androidx.room.*
-import com.leandro.appnoticia.model.Article
+import com.leandro.appnoticia.data.local.model.Article
 
 @Database(entities = [Article::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

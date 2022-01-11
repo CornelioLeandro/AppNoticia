@@ -1,4 +1,4 @@
-package com.leandro.appnoticia.ui
+package com.leandro.appnoticia.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,10 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.leandro.appnoticia.adapter.MainAdapter
+import com.leandro.appnoticia.ui.adapter.MainAdapter
 import com.leandro.appnoticia.databinding.ActivitySearchBinding
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.Search.SearchPresenter
 import com.leandro.appnoticia.presenter.ViewHome
 import com.leandro.appnoticia.util.UtilQueryTextListener
@@ -38,8 +38,6 @@ class SearchActivity : AppCompatActivity(), ViewHome.View{
         search()
         clickAdapter()
     }
-
-
 
     fun search(){
         binding.searchNews.setOnQueryTextListener(
@@ -71,7 +69,7 @@ class SearchActivity : AppCompatActivity(), ViewHome.View{
 
     private fun clickAdapter(){
         mainAdapter.setOnClickListener { article ->
-            val  intent = Intent(this,ArticleActivity::class.java)
+            val  intent = Intent(this, ArticleActivity::class.java)
             intent.putExtra("article", article)
             startActivity(intent)
         }

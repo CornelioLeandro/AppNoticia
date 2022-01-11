@@ -1,8 +1,7 @@
 package com.leandro.appnoticia.presenter.Search
 
-import com.leandro.appnoticia.databinding.ActivitySearchBinding
-import com.leandro.appnoticia.model.NewsResponse
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.NewsResponse
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.ViewHome
 
 

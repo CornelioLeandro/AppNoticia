@@ -1,7 +1,7 @@
 package com.leandro.appnoticia.presenter.Favorite
 
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.data.NewsDataSource
+import com.leandro.appnoticia.data.local.model.Article
+import com.leandro.appnoticia.repository.NewsDataSource
 import com.leandro.appnoticia.presenter.ViewHome
 
 class FavoritePresenter(

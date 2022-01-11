@@ -1,7 +1,6 @@
 package com.leandro.appnoticia.presenter.Favorite
 
-import com.leandro.appnoticia.model.Article
-import com.leandro.appnoticia.model.NewsResponse
+import com.leandro.appnoticia.data.local.model.Article
 
 interface FavoriteHome {
 
