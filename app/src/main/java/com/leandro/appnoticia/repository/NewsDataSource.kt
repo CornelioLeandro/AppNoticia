@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 class NewsDataSource(context: Context) {
 
     private var db: ArticleDatabase = ArticleDatabase(context)
-    private var newsRepository: NewsRepository = NewsRepository(db)
+    private var newsRepository: NewsRepository = NewsRepository(RetrofitInstance.api, db)
 
     fun getBreakNews(callback: NewsHome.Presenter) {
         GlobalScope.launch(Dispatchers.Main) {

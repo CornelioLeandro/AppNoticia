@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.leandro.appnoticia.ui.fragments.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
         android:label="Home" >
         <action
             android:id="@+id/action_homeFragment_to_webFragment"
@@ -15,6 +17,7 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.leandro.appnoticia.ui.fragments.favorite.FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"
         android:label="Favorite" >
         <action
             android:id="@+id/action_favoriteFragment_to_webFragment"
@@ -23,6 +26,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.leandro.appnoticia.ui.fragments.search.SearchFragment"
+        tools:layout="@layout/fragment_search"
         android:label="Search" >
         <action
             android:id="@+id/action_searchFragment_to_webFragment"
@@ -31,6 +35,7 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="com.leandro.appnoticia.ui.fragments.webview.WebFragment"
+        tools:layout="@layout/fragment_web_view"
         android:label="Noticia" >
         <argument
             android:name="article"
