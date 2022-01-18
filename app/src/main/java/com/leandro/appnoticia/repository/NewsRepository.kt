@@ -1,5 +1,6 @@
 package com.leandro.appnoticia.repository
 
+import androidx.lifecycle.LiveData
 import com.leandro.appnoticia.data.local.model.Article
 import com.leandro.appnoticia.data.local.db.ArticleDatabase
 import com.leandro.appnoticia.data.remote.NewsAPI
@@ -10,10 +11,10 @@ class NewsRepository(
 
     //Remote
     suspend fun getAllRemote() = api.getBreakNews()
-    suspend fun  searrch(query: String) = api.searchNews(query)
+    suspend fun  search(query: String) = api.searchNews(query)
 
     //Local
     suspend fun updateInsert(article: Article) = db.getArticleDao().updateInsert(article)
-    fun getAll(): List<Article> = db.getArticleDao().getAll()
+    fun getAll(): LiveData<List<Article>> = db.getArticleDao().getAll()
     suspend fun delete(article: Article) = db.getArticleDao().delete(article)
 }

@@ -1,5 +1,6 @@
 package com.leandro.appnoticia.data.local.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.leandro.appnoticia.data.local.model.Article
 
@@ -10,7 +11,7 @@ interface ArticleDao {
     suspend fun updateInsert(article: Article) :Long
 
     @Query("SELECT * FROM articles")
-    fun getAll(): List<Article>
+    fun getAll(): LiveData<List<Article>>
 
     @Delete
     suspend fun delete(article: Article)

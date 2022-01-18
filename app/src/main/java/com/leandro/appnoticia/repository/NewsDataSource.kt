@@ -54,7 +54,7 @@ class NewsDataSource(context: Context) {
     fun getAllArticle(callback: FavoriteHome.Presenter){
         var allArticle: List<Article>
         CoroutineScope(Dispatchers.IO).launch {
-            allArticle = newsRepository.getAll()
+            allArticle = newsRepository.getAll().value!!
 
             withContext(Dispatchers.Main){
                 callback.onSuccess(allArticle)

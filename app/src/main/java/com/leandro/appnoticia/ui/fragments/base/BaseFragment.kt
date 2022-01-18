@@ -34,4 +34,5 @@ abstract class BaseFragment<VM : ViewModel, VB : ViewBinding> : Fragment() {
     abstract fun getFragmentRepository(): NewsRepository
 
     abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): VB
+
 }
